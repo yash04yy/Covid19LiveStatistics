@@ -223,7 +223,7 @@
      formatedDates = [];
 
  // Get Country Code
- let country_code = geoplugin_countryCode();
+ let country_code = "IN";
  let user_country;
  country_list.forEach(country => {
      if (country.code == country_code) {
