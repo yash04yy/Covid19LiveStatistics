@@ -342,7 +342,7 @@
          type: "line",
          data: {
              datasets: [{
-                     label: "Cases",
+                     label: "Total Cases",
                      data: cases_list,
                      fill: false,
                      borderColor: "#FFF",
