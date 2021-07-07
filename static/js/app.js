@@ -213,9 +213,13 @@
  const new_deaths_element = document.querySelector(".deaths .new-value");
 
  const ctx = document.getElementById("axes_line_chart").getContext("2d");
+ const ctx2 = document.getElementById("axes_line_chart_2").getContext("2d");
 
  //App Variables
  let app_data = [],
+     testing = [],
+     testing1 = [],
+     testing2 = [],
      cases_list = [],
      recovered_list = [],
      deaths_list = [],
@@ -236,6 +240,9 @@
      country_name_element.innerHTML = "Loading...";
 
      (cases_list = []),
+     (testing = []),
+     (testing1 = []),
+     (testing2 = []),
      (recovered_list = []),
      (deaths_list = []),
      (dates = []),
@@ -301,8 +308,10 @@
 
  // UPDATE UI FUNCTION
  function updateUI() {
+     updatechartdata();
      updateStats();
      axesLinearChart();
+     axesLinearChart2();
  }
 
  function updateStats() {
@@ -310,8 +319,7 @@
      const new_confirmed_cases = total_cases - cases_list[cases_list.length - 2];
 
      const total_recovered = recovered_list[recovered_list.length - 1];
-     const new_recovered_cases =
-         total_recovered - recovered_list[recovered_list.length - 2];
+     const new_recovered_cases = total_recovered - recovered_list[recovered_list.length - 2];
 
      const total_deaths = deaths_list[deaths_list.length - 1];
      const new_deaths_cases = total_deaths - deaths_list[deaths_list.length - 2];
@@ -324,12 +332,20 @@
      deaths_element.innerHTML = total_deaths;
      new_deaths_element.innerHTML = `+${new_deaths_cases}`;
 
+
      // format dates
      dates.forEach((date) => {
          formatedDates.push(formatDate(date));
      });
  }
 
+ function updatechartdata() {
+     cases_list.forEach(myfunction);
+
+     function myfunction(value, index, array) {
+         testing[index] = value - array[index - 1];
+     }
+ }
  // UPDATE CHART
  let my_chart;
 
@@ -366,6 +382,32 @@
                      borderWidth: 1,
                  },
              ],
+             labels: formatedDates,
+         },
+         options: {
+             responsive: true,
+             maintainAspectRatio: false,
+         },
+     });
+ }
+ let my_chart2;
+
+ function axesLinearChart2() {
+     if (my_chart2) {
+         my_chart2.destroy();
+     }
+     my_chart2 = new Chart(ctx2, {
+
+         type: "line",
+         data: {
+             datasets: [{
+                 label: "Daily Cases",
+                 data: testing,
+                 fill: true,
+                 borderColor: "#FFF",
+                 backgroundColor: "#f44336",
+                 borderWidth: 1,
+             }, ],
              labels: formatedDates,
          },
          options: {
