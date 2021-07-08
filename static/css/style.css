@@ -95,6 +95,17 @@ main {
     background-size: cover;
 }
 
+.videos {
+    max-width: 1590px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: rgb(241, 241, 241);
+    text-align: center;
+    height: 100%;
+    padding: 55px 0px;
+    min-height: 30vh;
+}
+
 .stats2 {
     max-width: 590px;
     margin: 10px;
@@ -425,15 +436,19 @@ section h5 a {
         flex-direction: column;
         align-items: flex-start;
     }
-    .stats {
-        max-width: 1000px;
+    body {
+        font-size: 14px;
         margin: 0 auto;
-        border-radius: 0px;
+    }
+    .stats {
+        margin: 0 auto;
+        width: 94%;
     }
     .stats2 {
         margin: 0 auto;
-        max-width: 1000px;
-        border-radius: 0px;
+        margin-top: 10px;
+        width: 94%;
+        max-width: 990px;
     }
 }
 
