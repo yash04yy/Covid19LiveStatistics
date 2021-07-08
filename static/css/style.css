@@ -442,6 +442,7 @@ section h5 a {
     }
     .stats {
         margin: 0 auto;
+        margin-top: 10px;
         width: 94%;
     }
     .stats2 {
