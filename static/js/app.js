@@ -343,7 +343,12 @@
      cases_list.forEach(myfunction);
 
      function myfunction(value, index, array) {
-         testing[index] = value - array[index - 1];
+         if(array[index-1]==0)
+         {
+           testing[index]=0;
+         }
+         else
+           testing[index] = value - array[index - 1];
      }
  }
  // UPDATE CHART
